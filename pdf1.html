@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF 1</title>
+    <script type="text/javascript"
+        src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body style="min-height: 100vh; font-family: Arial, Helvetica, sans-serif; font-size: 12px;">
+</body>
+
+<script>
+    function savePdf() {
+        var element = document.body;
+        // html2pdf(element);
+        html2pdf()
+            .set({
+                filename: 'giact1.pdf',
+                margin: 8,
+            })
+            .from(element)
+            .save();
+    }
+    let { servicesRan, submittedBy, routingNumber, accountNumber, accountType, businessName, fein, referenceId,
+        timeStamp, bankName, bankAccountType, realTimeDate, lastUpdatedDate, AuthCode, responseStatus, responseCode } = {};
+    let result = `<div style="min-height: 1122px;">
+        <div style="text-align: center; height: 1122px; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <div style="display: inline-flex; text-align: center;">
+                <div style="padding: 0 20px 0 0;">
+                    <img src="./logo.jpg" style="width: 160px; height: 160px;">
+                </div>
+                <div>
+                    <div style="font-size: 92px; color: #6e6f71; font-weight: 600; font-family: calibri;">giact</div>
+                <div style="color: #6e6f71; font-weight: 600; font-size: 18px; padding: 10px 0 0 10px; font-family: Sans-serif; ">A REFINITIV COMPANY</div>
+            </div>
+            <sup style="font-size: 20px; padding-top: 20px;color: #6e6f71;">®</sup>
+        </div>
+        <div style="color: #40729e; font-size: 35px; font-weight: 600; padding-top: 15px; font-family: Sans-serif;"><i>Verification Search Result</i></div>
+    </div>
+    <main style= "margin: auto; height: 100%; width: 95%; margin-bottom: 1rem;">
+    <!-- Inquiry Information -->
+    
+    <div style="page-break-inside: avoid;">
+        <div style = "color: white; background-color: rgb(109 110 113); padding: 4px 8px; font-size: 14px; font-weight: 600;">Inquiry Information</div>
+        <div style=" border: 1px solid rgb(189 190 191); padding: 4px 0; color: rgb(109 110 113);">
+            <div style ="display: grid; grid-template-columns: calc(50% - 4px) calc(50% - 4px); justify-content: space-between;
+             line-height: 20px;">
+                <div style=" text-align: right; font-weight: 600;">
+                    <p>Services Ran:</p>
+                    <p>Submitted By:</p>
+                </div>
+                <div style="text-align: left;">
+                    <p>${servicesRan}</p>
+                    <p>${submittedBy}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Check Information -->
+    <div>
+        <div style = "color: white; background-color: rgb(109 110 113); padding: 4px 8px; font-size: 14px; font-weight: 600;">Check Information</div>
+        <div style=" border: 1px solid rgb(189 190 191); padding: 4px 0; color: rgb(109 110 113);">
+            <div style ="display: grid; grid-template-columns: calc(50% - 4px) calc(50% - 4px); justify-content: space-between;
+             line-height: 20px;">
+                <div style=" text-align: right; font-weight: 600;">
+                    <p>Routing Number:</p>
+                    <p>Account Number:</p>
+                    <p>Account Type:</p>
+                </div>
+                <div style="text-align: left;">
+                    <p>${routingNumber}</p>
+                    <p>${accountNumber}</p>
+                    <p>${accountType}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Business Information -->
+    <div id="common-section">
+        <div style = "color: white; background-color: rgb(109 110 113); padding: 4px 8px; font-size: 14px; font-weight: 600;">Business Information</div>
+        <div style=" border: 1px solid rgb(189 190 191); padding: 4px 0; color: rgb(109 110 113);">
+            <div style ="display: grid; grid-template-columns: calc(50% - 4px) calc(50% - 4px); justify-content: space-between;
+             line-height: 20px;">
+                <div style=" text-align: right; font-weight: 600;">
+                    <p>Business Name:</p>
+                    <p>FEIN:</p>
+                </div>
+                <div style="text-align: left;">
+                    <p>${businessName}</p>
+                    <p>${fein}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Results -->
+    <div id="common-section">
+        <div style = "color: white; background-color: rgb(109 110 113); padding: 4px 8px; font-size: 14px; font-weight: 600;">Results</div>
+        <div style=" border: 1px solid rgb(189 190 191); padding: 4px 0; color: rgb(109 110 113);">
+            <div style ="display: grid; grid-template-columns: calc(50% - 4px) calc(50% - 4px); justify-content: space-between;
+             line-height: 20px;">
+                <div style="text-align: right; font-weight: 600;">
+                    <p>Item Reference ID:</p>
+                    <p>Timestamp:</p>
+                    <p>Bank Name:</p>
+                    <p>Bank Account Type:</p>
+                    <p>Date Account Added To Real-Time Network:</p>
+                    <p>Date Account Information Was Last Updated:</p>
+                </div>
+                <div style="text-align: left;">
+                    <p>${referenceId}</p>
+                    <p>${timeStamp}</p>
+                    <p>${bankName}</p>
+                    <p>${bankAccountType}</p>
+                    <p>${realTimeDate}</p>
+                    <p>${lastUpdatedDate}</p>
+                </div>
+            </div>
+            <div style ="width: 90%; display: flex; margin: auto; flex-direction: column;">
+                <div style = "color: white; background-color: rgb(109 110 113); padding: 4px 8px; font-size: 14px; font-weight: 600;">Verification Results</div>
+                <div style="border: 1px solid rgb(189 190 191); padding: 4px 0; color: rgb(109 110 113);">
+                    <div style ="display: grid; grid-template-columns: calc(50% - 4px) calc(50% - 4px); justify-content: space-between;
+             line-height: 20px;">
+                        <div style=" text-align: right; font-weight: 600;">
+                            <p>Account Response Code:</p><br><br>
+                            <p>Authentication Response Code:</p><br>
+                            <p>Verification Response:</p>
+                        </div>
+                        <div style ="color: #02640b !important; font-weight: 600; text-align: left;">
+                            <p>${responseCode}</p><br><br>
+                            <p>${AuthCode}</p><br>
+                            <p>${responseStatus}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>`;
+    document.body.innerHTML += result;
+    setTimeout(() => {
+        savePdf()
+    }, 2000);
+</script>
+
+</html>
